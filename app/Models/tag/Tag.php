@@ -2,6 +2,7 @@
 
 namespace App\Models\tag;
 
+use App\Models\post\Post;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
@@ -11,8 +12,8 @@ class Tag extends Model
         'taggable_id',
     ];
 
-    public function taggable()
+    public function posts()
     {
-        return $this->morphTo();
+        return $this->morphedByMany(Post::class,'taggable');
     }
 }
