@@ -14,3 +14,33 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('backend/js/demo/chart-pie-demo.js') }}"></script>
+
+    <!--Data table -->
+    <script src="{{ asset('backend/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function sweetAlertDelete(id) {
+            event.preventDefault();
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this Information!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Poof! Your data has been deleted!", {
+                            icon: "success",
+                            buttons: false,
+                            timer: 2000
+                        });
+                        $("#deleteButton" + id).submit();
+                    } else {
+                        swal("Your data is safe!");
+                    }
+                });
+        }
+    </script>

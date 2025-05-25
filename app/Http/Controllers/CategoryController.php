@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -28,7 +33,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category_name' => 'required|string|max:100|unique:categories,category_name',
+        ]);
+
+        try {
+            $data = $request->all();
+            Category::create($data);
+            toastr()->success('Category created successfully.');
+            return back();
+        } catch (\Throwable $th) {
+            toastr()->error('Something went wrong. Please try again.');
+            return back();
+        }
     }
 
     /**
@@ -44,7 +61,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -52,7 +69,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'category_name' => 'required|string|max:100|unique:categories,category_name,' . $category->id,
+        ]);
+
+        try {
+            $data = $request->all();
+            $category->update($data);
+            toastr()->success('Category updated successfully.');
+            return redirect(route('category.categories.index'));
+        } catch (\Throwable $th) {
+            toastr()->error('Something went wrong. Please try again.');
+            return back();
+        }
     }
 
     /**
@@ -60,6 +89,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        try {
+            $category->delete();
+            toastr()->success('Category deleted successfully.');
+            return back();
+        } catch (\Throwable $th) {
+            toastr()->error('Something went wrong. Please try again.');
+            return back();
+        }
     }
 }
