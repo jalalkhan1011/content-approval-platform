@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\ImageHelper;
 use App\Models\category\Category;
 use App\Models\post\Post;
+use App\Notifications\PostStatusNotification;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -151,7 +152,7 @@ class PostController extends Controller
             $post->status = 'approved';
             $post->save();
 
-            // $post->user->notify(new PostStatusNotification($post, 'approved'));
+            $post->user->notify(new PostStatusNotification($post, 'approved'));
             toastr()->success('Post Approved Successfully.');
             return back();
         } catch (\Throwable $th) {
@@ -166,7 +167,7 @@ class PostController extends Controller
             $post->status = 'rejected';
             $post->save();
 
-            // $post->user->notify(new PostStatusNotification($post, 'approved'));
+            $post->user->notify(new PostStatusNotification($post, 'approved'));
             toastr()->success('Post Rejected Successfully.');
             return back();
         } catch (\Throwable $th) {
