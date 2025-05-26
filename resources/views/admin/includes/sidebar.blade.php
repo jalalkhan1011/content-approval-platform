@@ -22,6 +22,13 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('post.posts.index') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>{{ __('Post') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('category.categories.index') }}">
             <i class="fas fa-fw fa-cog"></i>
             <span>{{ __('Category') }}</span>
@@ -30,7 +37,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('tag.tags.index') }}" >
+        <a class="nav-link" href="{{ route('tag.tags.index') }}" >
             <i class="fas fa-fw fa-wrench"></i>
             <span>{{ __('Tags') }}</span>
         </a> 

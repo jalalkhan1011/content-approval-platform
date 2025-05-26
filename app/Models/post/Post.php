@@ -14,8 +14,8 @@ class Post extends Model
         'title',
         'description',
         'status',
-        'iamge_path',
-        'thumbnail_path',
+        'image',
+        'thumbnail',
     ];
 
     public function user()
@@ -30,6 +30,6 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->morphToMany(Tag::class, 'taggable');
+        return $this->morphMany(Tag::class, 'taggable');
     }
 }
