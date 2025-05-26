@@ -7,6 +7,18 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Instraction for project
+
+1. 1st clone repository.
+2. Run this command (composer update) for vendor file and packages.
+3. Than run npm i and npm run dev or npm run build.
+4. I add a data base file with the repository. database file name is (content_approval.sql). Import database file
+   or add a data base name into your data base serve linke(xammp or laragon) for local machin and run this command (php artisan migrate:fresh --seed) for migrating database.
+5. Run this command (php artisan storage:link) for connecting imgage storage path.
+6. Run this command (php artisan queue:work)  for Job Queues to send approval/rejection emails.
+7. Run this command (php artisan posts:archive-old) for Scheduled Jobs to archive unreviewed posts after 3 days.
+8. I also include .env file with repository.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
