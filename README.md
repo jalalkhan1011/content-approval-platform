@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Instraction for project
+## Instraction for run the  project
 
 1. 1st clone repository.
 2. Run this command (composer update) for vendor file and packages.
