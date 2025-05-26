@@ -6,9 +6,12 @@ use App\Models\category\Category;
 use App\Models\tag\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable  = [
         'user_id',
         'title',

@@ -43,4 +43,27 @@
                     }
                 });
         }
+
+        function sweetAlertPostDelete(id) {
+            event.preventDefault();
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will be able to recover this Information!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Poof! Your data has been deleted!", {
+                            icon: "success",
+                            buttons: false,
+                            timer: 2000
+                        });
+                        $("#deletePostButton" + id).submit();
+                    } else {
+                        swal("Your data is safe!");
+                    }
+                });
+        }
     </script>

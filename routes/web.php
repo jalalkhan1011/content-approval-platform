@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('/tags', TagController::class);
     });
     Route::prefix('posts')->name('post.')->group(function () {
+        Route::post('/approve/{post}',[PostController::class,'approve'])->name('posts.approve');
+        Route::post('/reject/{post}',[PostController::class,'reject'])->name('posts.reject');
+        Route::post('/restore/{id}',[PostController::class,'restore'])->name('posts.restore');
         Route::resource('/posts', PostController::class);
     });
 });
