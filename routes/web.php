@@ -19,10 +19,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function () {
     Route::prefix('categories')->name('category.')->group(function () {
         Route::resource('/categories', CategoryController::class);
-    });
-    Route::prefix('tags')->name('tag.')->group(function () {
-        Route::resource('/tags', TagController::class);
-    });
+    }); 
     Route::prefix('posts')->name('post.')->group(function () {
         Route::post('/approve/{post}',[PostController::class,'approve'])->name('posts.approve');
         Route::post('/reject/{post}',[PostController::class,'reject'])->name('posts.reject');

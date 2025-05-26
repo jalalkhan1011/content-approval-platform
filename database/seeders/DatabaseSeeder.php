@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\category\Category;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,8 +17,11 @@ class DatabaseSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         User::truncate();
+        Category::truncate();
         $this->call([
             AdminUserSeeder::class,
+            UserSeeder::class,
+            CategorySeeder::class,
         ]);
     }
 }
